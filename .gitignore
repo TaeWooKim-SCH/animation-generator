@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.env
+.venv/
+venv/
+env/
+
+# Model weights & large files
+*.pt
+*.pth
+*.safetensors
+*.ckpt
+*.bin
+*.onnx
+models_cache/
+hf_cache/
+huggingface/
+
+# Outputs (generated files)
+backend/outputs/
+
+# Node
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
+*.env.local
+
+# Logs
+*.log
+logs/

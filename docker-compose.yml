@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/outputs:/app/outputs
+      - ./backend/hf_cache:/app/hf_cache
+    environment:
+      - HF_TOKEN=${HF_TOKEN}
+      - SVD_MODEL=${SVD_MODEL:-stabilityai/stable-video-diffusion-img2vid-xt}
+      - HF_HOME=/app/hf_cache
+      - OUTPUT_DIR=/app/outputs
+      - CORS_ORIGINS=http://localhost:5173,http://localhost:3000
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+    restart: unless-stopped

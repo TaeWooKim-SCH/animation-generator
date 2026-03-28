@@ -1,0 +1,122 @@
+/* ProgressBar.module.css */
+
+.wrapper { display: flex; flex-direction: column; gap: 14px; }
+
+/* ── 바 ── */
+.barContainer {
+  position: relative;
+  height: 6px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px;
+  overflow: visible;
+}
+
+.bar {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #ff6b35, #e11d48, #7c3aed);
+  transition: width 0.4s var(--ease);
+  position: relative;
+}
+
+.bar.done {
+  background: linear-gradient(90deg, #22d3a8, #4ade80);
+}
+
+.barGlow {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255,107,53,0.6);
+  filter: blur(8px);
+  transition: left 0.4s var(--ease);
+  pointer-events: none;
+}
+
+/* ── 정보 텍스트 ── */
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.percent {
+  font-size: 22px;
+  font-weight: 800;
+  font-family: var(--font-head);
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  min-width: 52px;
+}
+
+.message {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-align: right;
+}
+
+/* ── 스텝 ── */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s var(--ease);
+  opacity: 0.35;
+}
+
+.step.stepDone {
+  opacity: 0.6;
+}
+.step.stepDone .stepIcon::after {
+  content: '✓';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(34,211,168,0.85);
+  border-radius: 50%;
+  font-size: 10px;
+}
+
+.step.stepActive {
+  opacity: 1;
+  background: rgba(255,107,53,0.08);
+  border: 1px solid rgba(255,107,53,0.2);
+}
+
+.step.stepPending {
+  opacity: 0.2;
+}
+
+.stepIcon {
+  position: relative;
+  font-size: 18px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stepLabel {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+}

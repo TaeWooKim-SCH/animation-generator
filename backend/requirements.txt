@@ -1,0 +1,29 @@
+# Web framework
+fastapi==0.109.2
+uvicorn[standard]==0.27.1
+python-multipart==0.0.9
+aiofiles==23.2.1
+
+# PyTorch - install with CUDA separately (see README)
+# torch>=2.1.0
+# torchvision>=0.16.0
+
+# Diffusion models
+diffusers==0.27.2
+transformers==4.38.2
+accelerate==0.27.2
+safetensors==0.4.2
+huggingface-hub==0.21.3
+
+# Background removal
+rembg[gpu]==2.0.56
+
+# Image processing
+Pillow==10.2.0
+imageio==2.34.0
+imageio-ffmpeg==0.4.9
+opencv-python-headless==4.9.0.80
+numpy==1.26.4
+
+# Utilities
+python-dotenv==1.0.1

@@ -1,0 +1,138 @@
+/* UploadZone.module.css */
+
+.wrapper { display: flex; flex-direction: column; }
+
+.zone {
+  position: relative;
+  border: 2px dashed var(--border-bright);
+  border-radius: var(--radius-lg);
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease), background 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  overflow: hidden;
+  background: rgba(255,255,255,0.02);
+}
+
+.zone:hover:not(.disabled) {
+  border-color: var(--orange);
+  background: rgba(255, 107, 53, 0.04);
+  box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.08), inset 0 0 40px rgba(255, 107, 53, 0.04);
+}
+
+.zone:focus-visible {
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.3);
+}
+
+.zone.dragging {
+  border-color: var(--orange);
+  background: rgba(255, 107, 53, 0.08);
+  box-shadow: 0 0 0 6px rgba(255, 107, 53, 0.12), inset 0 0 60px rgba(255, 107, 53, 0.06);
+  animation: pulse-glow 1.5s ease infinite;
+}
+
+.zone.hasImage {
+  border-style: solid;
+  border-color: var(--border);
+  min-height: 240px;
+}
+
+.zone.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ── 플레이스홀더 ── */
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 36px 20px;
+  text-align: center;
+  pointer-events: none;
+}
+
+.icon {
+  margin-bottom: 4px;
+  filter: drop-shadow(0 0 16px rgba(255, 107, 53, 0.3));
+  transition: transform 0.3s var(--ease-spring), filter 0.3s;
+}
+.zone:hover:not(.disabled) .icon {
+  transform: translateY(-4px) scale(1.05);
+  filter: drop-shadow(0 0 24px rgba(255, 107, 53, 0.5));
+}
+
+.mainText {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.subText {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.hint {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  background: rgba(255, 107, 53, 0.08);
+  border: 1px solid rgba(255, 107, 53, 0.15);
+  border-radius: 8px;
+  padding: 6px 12px;
+  margin-top: 4px;
+}
+
+/* ── 미리보기 ── */
+.preview {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  min-height: 240px;
+}
+
+.previewImg {
+  width: 100%;
+  height: 240px;
+  object-fit: contain;
+  border-radius: calc(var(--radius-lg) - 2px);
+  padding: 12px;
+}
+
+.previewOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 6, 14, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s var(--ease);
+  border-radius: calc(var(--radius-lg) - 2px);
+  backdrop-filter: blur(4px);
+}
+.preview:hover .previewOverlay { opacity: 1; }
+
+.changeBtn {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(255, 107, 53, 0.8);
+  padding: 8px 18px;
+  border-radius: 8px;
+}
+
+/* ── 에러 ── */
+.error {
+  margin-top: 8px;
+  font-size: 12.5px;
+  color: var(--error);
+  font-weight: 500;
+}
