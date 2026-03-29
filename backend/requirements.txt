@@ -27,3 +27,4 @@ numpy==1.26.4
 
 # Utilities
 python-dotenv==1.0.1
+psutil>=5.9.0          # MPS/CPU 백엔드 메모리 감지용 (Apple Silicon 필수)
