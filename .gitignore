@@ -27,6 +27,7 @@ huggingface/
 
 # Outputs (generated files)
 backend/outputs/
+backend/test_output/
 
 # Node
 node_modules/
